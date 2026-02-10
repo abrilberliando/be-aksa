@@ -9,6 +9,8 @@ use App\Http\Controllers\Api\AuthController;
 Route::post('/login', [AuthController::class, 'login'])->middleware('guest:sanctum');
 
 Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/me', [App\Http\Controllers\Api\AuthController::class, 'me']);
+    Route::put('/profile/update', [App\Http\Controllers\Api\AuthController::class, 'updateProfile']);
     Route::post('/logout', [AuthController::class, 'logout']);
 
     Route::get('/divisions', [DivisionController::class, 'index']);

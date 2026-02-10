@@ -37,7 +37,12 @@ class EmployeeController extends Controller
                     'position' => $emp->position,
                 ]),
             ],
-            'pagination' => $employees->toArray()['links'] // Atau sesuaikan key pagination manual
+            'pagination' => [
+                'total' => $employees->total(),
+                'per_page' => $employees->perPage(),
+                'current_page' => $employees->currentPage(),
+                'last_page' => $employees->lastPage(),
+            ]
         ]);
     }
 
